@@ -43,6 +43,24 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
         return;
       }
 
+      // Check if it's a custom uploaded paper
+      if (widget.paper.id.startsWith('custom_')) {
+        // Custom papers have local file paths
+        final file = File(widget.paper.filePath);
+        if (await file.exists()) {
+          setState(() {
+            _localPdfPath = widget.paper.filePath;
+            _isLoading = false;
+          });
+        } else {
+          setState(() {
+            _error = 'PDF file not found';
+            _isLoading = false;
+          });
+        }
+        return;
+      }
+
       // Otherwise, copy from assets to temp directory
       final tempPath = await DownloadService.copyAssetToTemp(
         widget.paper.filePath,

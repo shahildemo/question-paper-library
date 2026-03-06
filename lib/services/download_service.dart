@@ -92,12 +92,19 @@ class DownloadService {
         final byteData = await rootBundle.load(sourcePath);
         await existingFile.writeAsBytes(byteData.buffer.asUint8List());
       } else {
-        // Download from URL
-        await _dio.download(
-          sourcePath,
-          filePath,
-          onReceiveProgress: onProgress,
-        );
+        // Check if sourcePath is a local file or URL
+        final sourceFile = File(sourcePath);
+        if (await sourceFile.exists()) {
+          // Copy from local file
+          await sourceFile.copy(filePath);
+        } else {
+          // Download from URL
+          await _dio.download(
+            sourcePath,
+            filePath,
+            onReceiveProgress: onProgress,
+          );
+        }
       }
 
       return DownloadResult(
