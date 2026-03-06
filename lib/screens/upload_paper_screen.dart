@@ -9,10 +9,7 @@ import '../services/github_service.dart';
 class UploadPaperScreen extends StatefulWidget {
   final Subject subject;
 
-  const UploadPaperScreen({
-    super.key,
-    required this.subject,
-  });
+  const UploadPaperScreen({super.key, required this.subject});
 
   @override
   State<UploadPaperScreen> createState() => _UploadPaperScreenState();
@@ -70,7 +67,7 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
 
   Future<void> _uploadPaper() async {
     if (!_formKey.currentState!.validate()) return;
-    
+
     if (_selectedFile == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -109,7 +106,7 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
       // 2. Optionally push to GitHub
       if (_shareToCloud && _isGitHubConfigured) {
         setState(() => _uploadStatus = 'Uploading to GitHub…');
-        final result = await GitHubService.uploadPaper(
+        final result = await GitHubService.uploadPaperLegacy(
           facultyId: widget.subject.id.split('_').first,
           semesterId: widget.subject.id.split('_').length > 1
               ? widget.subject.id.split('_')[1]
@@ -124,8 +121,9 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(result.message),
-              backgroundColor:
-                  result.success ? AppColors.success : AppColors.warning,
+              backgroundColor: result.success
+                  ? AppColors.success
+                  : AppColors.warning,
             ),
           );
         }
@@ -134,9 +132,11 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(_shareToCloud && _isGitHubConfigured
-                ? 'Paper uploaded locally and shared to cloud!'
-                : 'Paper uploaded successfully!'),
+            content: Text(
+              _shareToCloud && _isGitHubConfigured
+                  ? 'Paper uploaded locally and shared to cloud!'
+                  : 'Paper uploaded successfully!',
+            ),
             backgroundColor: AppColors.success,
           ),
         );
@@ -170,9 +170,7 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Upload Question Paper'),
-      ),
+      appBar: AppBar(title: const Text('Upload Question Paper')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Form(
@@ -229,10 +227,7 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
               // Year Selection
               const Text(
                 'Exam Year',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 8),
               DropdownButtonFormField<int>(
@@ -263,10 +258,7 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
               // File Selection
               const Text(
                 'PDF File',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 8),
               GestureDetector(
@@ -332,9 +324,12 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
                   child: SwitchListTile(
                     title: const Text('Share to Cloud'),
                     subtitle: const Text(
-                        'Upload to GitHub so all users can access this paper'),
-                    secondary: const Icon(Icons.cloud_upload,
-                        color: AppColors.primary),
+                      'Upload to GitHub so all users can access this paper',
+                    ),
+                    secondary: const Icon(
+                      Icons.cloud_upload,
+                      color: AppColors.primary,
+                    ),
                     value: _shareToCloud,
                     onChanged: (v) => setState(() => _shareToCloud = v),
                     activeColor: AppColors.primary,
@@ -342,26 +337,27 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
                 )
               else
                 GestureDetector(
-                  onTap: () => Navigator.pushNamed(
-                      context, '/github-settings'),
+                  onTap: () => Navigator.pushNamed(context, '/github-settings'),
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: AppColors.info.withValues(alpha: 0.08),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          color: AppColors.info.withValues(alpha: 0.3)),
+                        color: AppColors.info.withValues(alpha: 0.3),
+                      ),
                     ),
                     child: Row(
                       children: const [
-                        Icon(Icons.cloud_off,
-                            color: AppColors.info, size: 20),
+                        Icon(Icons.cloud_off, color: AppColors.info, size: 20),
                         SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             'Set up GitHub Cloud to share papers with all users. Tap to configure.',
                             style: TextStyle(
-                                color: AppColors.info, fontSize: 13),
+                              color: AppColors.info,
+                              fontSize: 13,
+                            ),
                           ),
                         ),
                       ],
@@ -378,8 +374,9 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
                     _uploadStatus,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                        color: AppColors.primary,
-                        fontWeight: FontWeight.w500),
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               SizedBox(

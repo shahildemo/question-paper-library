@@ -6,6 +6,7 @@ import 'providers/faculty_provider.dart';
 import 'providers/navigation_provider.dart';
 import 'screens/faculty_screen.dart';
 import 'screens/github_settings_screen.dart';
+import 'screens/upload_question_paper_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         home: const FacultyScreen(),
         routes: {
           '/github-settings': (_) => const GitHubSettingsScreen(),
+          '/upload-paper': (_) => const UploadQuestionPaperScreen(),
         },
       ),
     );

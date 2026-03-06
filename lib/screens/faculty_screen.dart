@@ -5,6 +5,7 @@ import '../providers/faculty_provider.dart';
 import '../providers/navigation_provider.dart';
 import '../widgets/faculty_card.dart';
 import 'year_screen.dart';
+import 'upload_question_paper_screen.dart';
 
 class FacultyScreen extends StatefulWidget {
   const FacultyScreen({super.key});
@@ -27,13 +28,23 @@ class _FacultyScreenState extends State<FacultyScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.selectFaculty),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.cloud_upload_outlined),
+            tooltip: 'Upload Question Paper',
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const UploadQuestionPaperScreen(),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Consumer<FacultyProvider>(
         builder: (context, provider, child) {
           if (provider.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (provider.error != null) {
@@ -41,11 +52,7 @@ class _FacultyScreenState extends State<FacultyScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
-                    Icons.error_outline,
-                    size: 64,
-                    color: Colors.red,
-                  ),
+                  const Icon(Icons.error_outline, size: 64, color: Colors.red),
                   const SizedBox(height: 16),
                   Text(
                     provider.error!,
@@ -63,9 +70,7 @@ class _FacultyScreenState extends State<FacultyScreen> {
           }
 
           if (provider.faculties.isEmpty) {
-            return const Center(
-              child: Text('No faculties available'),
-            );
+            return const Center(child: Text('No faculties available'));
           }
 
           return Padding(
