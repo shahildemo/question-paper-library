@@ -16,7 +16,7 @@ class DownloadService {
       if (status.isGranted) {
         return true;
       }
-      
+
       // Try requesting manage external storage for Android 11+
       final manageStatus = await Permission.manageExternalStorage.request();
       return manageStatus.isGranted;
@@ -26,7 +26,7 @@ class DownloadService {
 
   static Future<String> getDownloadPath() async {
     Directory? directory;
-    
+
     if (Platform.isAndroid) {
       directory = Directory('/storage/emulated/0/Download/QuestionPapers');
       if (!await directory.exists()) {
@@ -40,18 +40,21 @@ class DownloadService {
       }
       return downloadDir.path;
     }
-    
+
     return directory.path;
   }
 
-  static Future<String?> copyAssetToTemp(String assetPath, String fileName) async {
+  static Future<String?> copyAssetToTemp(
+    String assetPath,
+    String fileName,
+  ) async {
     try {
       final tempDir = await getTemporaryDirectory();
       final file = File('${tempDir.path}/$fileName');
-      
+
       final byteData = await rootBundle.load(assetPath);
       await file.writeAsBytes(byteData.buffer.asUint8List());
-      
+
       return file.path;
     } catch (e) {
       return null;
@@ -157,9 +160,5 @@ class DownloadResult {
   final String message;
   final String? filePath;
 
-  DownloadResult({
-    required this.success,
-    required this.message,
-    this.filePath,
-  });
+  DownloadResult({required this.success, required this.message, this.filePath});
 }
