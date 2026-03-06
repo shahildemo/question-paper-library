@@ -61,6 +61,12 @@ dependencies:
   
   # File picker for uploading PDFs
   file_picker: ^8.1.4
+  
+  # HTTP client for GitHub API calls
+  http: ^1.2.0
+  
+  # Base64 encoding for file upload to GitHub
+  crypto: ^3.0.3
 
 dev_dependencies:
   flutter_test:

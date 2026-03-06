@@ -5,6 +5,7 @@ import 'constants/app_theme.dart';
 import 'providers/faculty_provider.dart';
 import 'providers/navigation_provider.dart';
 import 'screens/faculty_screen.dart';
+import 'screens/github_settings_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         home: const FacultyScreen(),
+        routes: {
+          '/github-settings': (_) => const GitHubSettingsScreen(),
+        },
       ),
     );
   }

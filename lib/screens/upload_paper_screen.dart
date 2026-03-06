@@ -2,10 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import '../constants/app_colors.dart';
-import '../constants/app_strings.dart';
-import '../models/paper_model.dart';
 import '../models/subject_model.dart';
 import '../services/paper_management_service.dart';
+import '../services/github_service.dart';
 
 class UploadPaperScreen extends StatefulWidget {
   final Subject subject;
@@ -25,11 +24,25 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
   File? _selectedFile;
   bool _isUploading = false;
   int _selectedYear = DateTime.now().year;
+  bool _shareToCloud = false;
+  bool _isGitHubConfigured = false;
+  String _uploadStatus = '';
 
   final List<int> _years = List.generate(
     10,
     (index) => DateTime.now().year - index,
   );
+
+  @override
+  void initState() {
+    super.initState();
+    _checkGitHub();
+  }
+
+  Future<void> _checkGitHub() async {
+    final configured = await GitHubService.isConfigured();
+    setState(() => _isGitHubConfigured = configured);
+  }
 
   Future<void> _pickPdfFile() async {
     try {
@@ -70,32 +83,64 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
 
     setState(() {
       _isUploading = true;
+      _uploadStatus = 'Saving locally…';
     });
 
     try {
+      // 1. Save locally
       final paper = await PaperManagementService.uploadPaper(
         subjectId: widget.subject.id,
         year: _selectedYear,
         pdfFile: _selectedFile!,
       );
 
-      if (mounted) {
-        if (paper != null) {
+      if (paper == null) {
+        if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Paper uploaded successfully!'),
-              backgroundColor: AppColors.success,
-            ),
-          );
-          Navigator.pop(context, true);
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Failed to upload paper'),
+              content: Text('Failed to save paper locally'),
               backgroundColor: AppColors.error,
             ),
           );
         }
+        return;
+      }
+
+      // 2. Optionally push to GitHub
+      if (_shareToCloud && _isGitHubConfigured) {
+        setState(() => _uploadStatus = 'Uploading to GitHub…');
+        final result = await GitHubService.uploadPaper(
+          facultyId: widget.subject.id.split('_').first,
+          semesterId: widget.subject.id.split('_').length > 1
+              ? widget.subject.id.split('_')[1]
+              : widget.subject.id,
+          subjectId: widget.subject.id,
+          subjectName: widget.subject.name,
+          year: _selectedYear,
+          pdfFile: _selectedFile!,
+          onStatus: (s) => setState(() => _uploadStatus = s),
+        );
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(result.message),
+              backgroundColor:
+                  result.success ? AppColors.success : AppColors.warning,
+            ),
+          );
+        }
+      }
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(_shareToCloud && _isGitHubConfigured
+                ? 'Paper uploaded locally and shared to cloud!'
+                : 'Paper uploaded successfully!'),
+            backgroundColor: AppColors.success,
+          ),
+        );
+        Navigator.pop(context, true);
       }
     } catch (e) {
       if (mounted) {
@@ -110,6 +155,7 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
       if (mounted) {
         setState(() {
           _isUploading = false;
+          _uploadStatus = '';
         });
       }
     }
@@ -280,7 +326,62 @@ class _UploadPaperScreenState extends State<UploadPaperScreen> {
               ),
               const SizedBox(height: 32),
 
+              // Share to Cloud toggle
+              if (_isGitHubConfigured)
+                Card(
+                  child: SwitchListTile(
+                    title: const Text('Share to Cloud'),
+                    subtitle: const Text(
+                        'Upload to GitHub so all users can access this paper'),
+                    secondary: const Icon(Icons.cloud_upload,
+                        color: AppColors.primary),
+                    value: _shareToCloud,
+                    onChanged: (v) => setState(() => _shareToCloud = v),
+                    activeColor: AppColors.primary,
+                  ),
+                )
+              else
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(
+                      context, '/github-settings'),
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: AppColors.info.withValues(alpha: 0.08),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                          color: AppColors.info.withValues(alpha: 0.3)),
+                    ),
+                    child: Row(
+                      children: const [
+                        Icon(Icons.cloud_off,
+                            color: AppColors.info, size: 20),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            'Set up GitHub Cloud to share papers with all users. Tap to configure.',
+                            style: TextStyle(
+                                color: AppColors.info, fontSize: 13),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              const SizedBox(height: 24),
+
               // Upload Button
+              if (_isUploading && _uploadStatus.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Text(
+                    _uploadStatus,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

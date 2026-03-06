@@ -10,6 +10,8 @@ import '../widgets/paper_list_item.dart';
 import 'pdf_viewer_screen.dart';
 import 'upload_paper_screen.dart';
 import 'manage_papers_screen.dart';
+import 'shared_papers_screen.dart';
+import 'github_settings_screen.dart';
 
 class PaperScreen extends StatefulWidget {
   const PaperScreen({super.key});
@@ -18,18 +20,27 @@ class PaperScreen extends StatefulWidget {
   State<PaperScreen> createState() => _PaperScreenState();
 }
 
-class _PaperScreenState extends State<PaperScreen> {
+class _PaperScreenState extends State<PaperScreen>
+    with SingleTickerProviderStateMixin {
   final Map<String, bool> _downloadedPapers = {};
   final Map<String, bool> _downloadingPapers = {};
   final Map<String, double> _downloadProgress = {};
   List<Paper> _allPapers = [];
   Set<String> _deletedPaperIds = {};
   bool _isLoading = true;
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
     _loadData();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadData() async {
@@ -223,7 +234,24 @@ class _PaperScreenState extends State<PaperScreen> {
         return Scaffold(
           appBar: AppBar(
             title: Text(subject.name),
+            bottom: TabBar(
+              controller: _tabController,
+              tabs: const [
+                Tab(icon: Icon(Icons.phone_android, size: 18), text: 'Local'),
+                Tab(icon: Icon(Icons.cloud, size: 18), text: 'Shared'),
+              ],
+            ),
             actions: [
+              IconButton(
+                icon: const Icon(Icons.cloud_outlined),
+                tooltip: 'GitHub Cloud Settings',
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const GitHubSettingsScreen(),
+                  ),
+                ),
+              ),
               IconButton(
                 icon: const Icon(Icons.settings),
                 tooltip: 'Manage Papers',
@@ -238,45 +266,59 @@ class _PaperScreenState extends State<PaperScreen> {
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
           ),
-          body: _isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : visiblePapers.isEmpty
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.description_outlined,
-                        size: 64,
-                        color: Colors.grey,
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        AppStrings.noPapersFound,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
+          body: TabBarView(
+            controller: _tabController,
+            children: [
+              // ── Tab 1: Local Papers ──
+              _isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : visiblePapers.isEmpty
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.description_outlined,
+                                size: 64,
+                                color: Colors.grey,
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                AppStrings.noPapersFound,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : ListView.builder(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          itemCount: visiblePapers.length,
+                          itemBuilder: (context, index) {
+                            final paper = visiblePapers[index];
+                            return PaperListItem(
+                              paper: paper,
+                              isDownloaded: _downloadedPapers[paper.id] ?? false,
+                              isDownloading:
+                                  _downloadingPapers[paper.id] ?? false,
+                              downloadProgress:
+                                  _downloadProgress[paper.id] ?? 0,
+                              onView: () => _viewPaper(paper),
+                              onDownload: () => _downloadPaper(paper),
+                              onOpen: () => _openDownloadedPaper(paper),
+                            );
+                          },
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              : ListView.builder(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  itemCount: visiblePapers.length,
-                  itemBuilder: (context, index) {
-                    final paper = visiblePapers[index];
-                    return PaperListItem(
-                      paper: paper,
-                      isDownloaded: _downloadedPapers[paper.id] ?? false,
-                      isDownloading: _downloadingPapers[paper.id] ?? false,
-                      downloadProgress: _downloadProgress[paper.id] ?? 0,
-                      onView: () => _viewPaper(paper),
-                      onDownload: () => _downloadPaper(paper),
-                      onOpen: () => _openDownloadedPaper(paper),
-                    );
-                  },
-                ),
+
+              // ── Tab 2: Shared (GitHub Cloud) Papers ──
+              SharedPapersScreen(
+                subjectId: subject.id,
+                subjectName: subject.name,
+              ),
+            ],
+          ),
         );
       },
     );
