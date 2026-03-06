@@ -1,0 +1,404 @@
+{
+  "faculties": [
+    {
+      "id": "bca",
+      "name": "BCA",
+      "code": "BCA",
+      "icon": "computer",
+      "years": [
+        {
+          "id": "bca_year1",
+          "name": "1st Year",
+          "facultyId": "bca",
+          "semesters": [
+            {
+              "id": "bca_y1_s1",
+              "name": "Semester 1",
+              "yearId": "bca_year1",
+              "subjects": [
+                {
+                  "id": "bca_y1_s1_math",
+                  "name": "Mathematics I",
+                  "code": "MATH101",
+                  "semesterId": "bca_y1_s1",
+                  "papers": [
+                    {"id": "p1", "year": 2021, "subjectId": "bca_y1_s1_math", "fileName": "Mathematics_I_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"},
+                    {"id": "p2", "year": 2022, "subjectId": "bca_y1_s1_math", "fileName": "Mathematics_I_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.3 MB"},
+                    {"id": "p3", "year": 2023, "subjectId": "bca_y1_s1_math", "fileName": "Mathematics_I_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.4 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y1_s1_prog",
+                  "name": "Programming in C",
+                  "code": "CS101",
+                  "semesterId": "bca_y1_s1",
+                  "papers": [
+                    {"id": "p4", "year": 2021, "subjectId": "bca_y1_s1_prog", "fileName": "C_Programming_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.8 MB"},
+                    {"id": "p5", "year": 2022, "subjectId": "bca_y1_s1_prog", "fileName": "C_Programming_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.9 MB"},
+                    {"id": "p6", "year": 2023, "subjectId": "bca_y1_s1_prog", "fileName": "C_Programming_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.0 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y1_s1_eng",
+                  "name": "English",
+                  "code": "ENG101",
+                  "semesterId": "bca_y1_s1",
+                  "papers": [
+                    {"id": "p7", "year": 2021, "subjectId": "bca_y1_s1_eng", "fileName": "English_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.5 MB"},
+                    {"id": "p8", "year": 2022, "subjectId": "bca_y1_s1_eng", "fileName": "English_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.6 MB"},
+                    {"id": "p9", "year": 2023, "subjectId": "bca_y1_s1_eng", "fileName": "English_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.5 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y1_s1_it",
+                  "name": "Information Technology",
+                  "code": "IT101",
+                  "semesterId": "bca_y1_s1",
+                  "papers": [
+                    {"id": "p10", "year": 2021, "subjectId": "bca_y1_s1_it", "fileName": "IT_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.1 MB"},
+                    {"id": "p11", "year": 2022, "subjectId": "bca_y1_s1_it", "fileName": "IT_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.2 MB"},
+                    {"id": "p12", "year": 2023, "subjectId": "bca_y1_s1_it", "fileName": "IT_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.0 MB"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bca_y1_s2",
+              "name": "Semester 2",
+              "yearId": "bca_year1",
+              "subjects": [
+                {
+                  "id": "bca_y1_s2_math",
+                  "name": "Mathematics II",
+                  "code": "MATH102",
+                  "semesterId": "bca_y1_s2",
+                  "papers": [
+                    {"id": "p13", "year": 2021, "subjectId": "bca_y1_s2_math", "fileName": "Mathematics_II_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.4 MB"},
+                    {"id": "p14", "year": 2022, "subjectId": "bca_y1_s2_math", "fileName": "Mathematics_II_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"},
+                    {"id": "p15", "year": 2023, "subjectId": "bca_y1_s2_math", "fileName": "Mathematics_II_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.3 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y1_s2_cpp",
+                  "name": "Object Oriented Programming in C++",
+                  "code": "CS102",
+                  "semesterId": "bca_y1_s2",
+                  "papers": [
+                    {"id": "p16", "year": 2021, "subjectId": "bca_y1_s2_cpp", "fileName": "CPP_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.0 MB"},
+                    {"id": "p17", "year": 2022, "subjectId": "bca_y1_s2_cpp", "fileName": "CPP_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.1 MB"},
+                    {"id": "p18", "year": 2023, "subjectId": "bca_y1_s2_cpp", "fileName": "CPP_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.2 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y1_s2_accounts",
+                  "name": "Financial Accounting",
+                  "code": "ACC101",
+                  "semesterId": "bca_y1_s2",
+                  "papers": [
+                    {"id": "p19", "year": 2021, "subjectId": "bca_y1_s2_accounts", "fileName": "Accounting_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.9 MB"},
+                    {"id": "p20", "year": 2022, "subjectId": "bca_y1_s2_accounts", "fileName": "Accounting_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.0 MB"},
+                    {"id": "p21", "year": 2023, "subjectId": "bca_y1_s2_accounts", "fileName": "Accounting_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.8 MB"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bca_year2",
+          "name": "2nd Year",
+          "facultyId": "bca",
+          "semesters": [
+            {
+              "id": "bca_y2_s3",
+              "name": "Semester 3",
+              "yearId": "bca_year2",
+              "subjects": [
+                {
+                  "id": "bca_y2_s3_ds",
+                  "name": "Data Structures",
+                  "code": "CS201",
+                  "semesterId": "bca_y2_s3",
+                  "papers": [
+                    {"id": "p22", "year": 2021, "subjectId": "bca_y2_s3_ds", "fileName": "Data_Structures_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"},
+                    {"id": "p23", "year": 2022, "subjectId": "bca_y2_s3_ds", "fileName": "Data_Structures_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.6 MB"},
+                    {"id": "p24", "year": 2023, "subjectId": "bca_y2_s3_ds", "fileName": "Data_Structures_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.4 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y2_s3_os",
+                  "name": "Operating System",
+                  "code": "CS202",
+                  "semesterId": "bca_y2_s3",
+                  "papers": [
+                    {"id": "p25", "year": 2021, "subjectId": "bca_y2_s3_os", "fileName": "OS_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.8 MB"},
+                    {"id": "p26", "year": 2022, "subjectId": "bca_y2_s3_os", "fileName": "OS_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.9 MB"},
+                    {"id": "p27", "year": 2023, "subjectId": "bca_y2_s3_os", "fileName": "OS_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.7 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y2_s3_dbms",
+                  "name": "Database Management System",
+                  "code": "CS203",
+                  "semesterId": "bca_y2_s3",
+                  "papers": [
+                    {"id": "p28", "year": 2021, "subjectId": "bca_y2_s3_dbms", "fileName": "DBMS_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "3.0 MB"},
+                    {"id": "p29", "year": 2022, "subjectId": "bca_y2_s3_dbms", "fileName": "DBMS_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "3.1 MB"},
+                    {"id": "p30", "year": 2023, "subjectId": "bca_y2_s3_dbms", "fileName": "DBMS_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.9 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y2_s3_cn",
+                  "name": "Computer Networks",
+                  "code": "CS204",
+                  "semesterId": "bca_y2_s3",
+                  "papers": [
+                    {"id": "p31", "year": 2021, "subjectId": "bca_y2_s3_cn", "fileName": "Computer_Networks_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.6 MB"},
+                    {"id": "p32", "year": 2022, "subjectId": "bca_y2_s3_cn", "fileName": "Computer_Networks_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.7 MB"},
+                    {"id": "p33", "year": 2023, "subjectId": "bca_y2_s3_cn", "fileName": "Computer_Networks_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bca_y2_s4",
+              "name": "Semester 4",
+              "yearId": "bca_year2",
+              "subjects": [
+                {
+                  "id": "bca_y2_s4_java",
+                  "name": "Java Programming",
+                  "code": "CS205",
+                  "semesterId": "bca_y2_s4",
+                  "papers": [
+                    {"id": "p34", "year": 2021, "subjectId": "bca_y2_s4_java", "fileName": "Java_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.3 MB"},
+                    {"id": "p35", "year": 2022, "subjectId": "bca_y2_s4_java", "fileName": "Java_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.4 MB"},
+                    {"id": "p36", "year": 2023, "subjectId": "bca_y2_s4_java", "fileName": "Java_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y2_s4_web",
+                  "name": "Web Technology",
+                  "code": "CS206",
+                  "semesterId": "bca_y2_s4",
+                  "papers": [
+                    {"id": "p37", "year": 2021, "subjectId": "bca_y2_s4_web", "fileName": "Web_Tech_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.1 MB"},
+                    {"id": "p38", "year": 2022, "subjectId": "bca_y2_s4_web", "fileName": "Web_Tech_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.2 MB"},
+                    {"id": "p39", "year": 2023, "subjectId": "bca_y2_s4_web", "fileName": "Web_Tech_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.3 MB"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bca_year3",
+          "name": "3rd Year",
+          "facultyId": "bca",
+          "semesters": [
+            {
+              "id": "bca_y3_s5",
+              "name": "Semester 5",
+              "yearId": "bca_year3",
+              "subjects": [
+                {
+                  "id": "bca_y3_s5_se",
+                  "name": "Software Engineering",
+                  "code": "CS301",
+                  "semesterId": "bca_y3_s5",
+                  "papers": [
+                    {"id": "p40", "year": 2021, "subjectId": "bca_y3_s5_se", "fileName": "Software_Engineering_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.7 MB"},
+                    {"id": "p41", "year": 2022, "subjectId": "bca_y3_s5_se", "fileName": "Software_Engineering_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.8 MB"},
+                    {"id": "p42", "year": 2023, "subjectId": "bca_y3_s5_se", "fileName": "Software_Engineering_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.6 MB"}
+                  ]
+                },
+                {
+                  "id": "bca_y3_s5_python",
+                  "name": "Python Programming",
+                  "code": "CS302",
+                  "semesterId": "bca_y3_s5",
+                  "papers": [
+                    {"id": "p43", "year": 2021, "subjectId": "bca_y3_s5_python", "fileName": "Python_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.0 MB"},
+                    {"id": "p44", "year": 2022, "subjectId": "bca_y3_s5_python", "fileName": "Python_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.1 MB"},
+                    {"id": "p45", "year": 2023, "subjectId": "bca_y3_s5_python", "fileName": "Python_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.2 MB"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bca_y3_s6",
+              "name": "Semester 6",
+              "yearId": "bca_year3",
+              "subjects": [
+                {
+                  "id": "bca_y3_s6_ai",
+                  "name": "Artificial Intelligence",
+                  "code": "CS303",
+                  "semesterId": "bca_y3_s6",
+                  "papers": [
+                    {"id": "p46", "year": 2021, "subjectId": "bca_y3_s6_ai", "fileName": "AI_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.9 MB"},
+                    {"id": "p47", "year": 2022, "subjectId": "bca_y3_s6_ai", "fileName": "AI_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "3.0 MB"},
+                    {"id": "p48", "year": 2023, "subjectId": "bca_y3_s6_ai", "fileName": "AI_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.8 MB"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bca_year4",
+          "name": "4th Year",
+          "facultyId": "bca",
+          "semesters": [
+            {
+              "id": "bca_y4_s7",
+              "name": "Semester 7",
+              "yearId": "bca_year4",
+              "subjects": [
+                {
+                  "id": "bca_y4_s7_android",
+                  "name": "Android Development",
+                  "code": "CS401",
+                  "semesterId": "bca_y4_s7",
+                  "papers": [
+                    {"id": "p49", "year": 2021, "subjectId": "bca_y4_s7_android", "fileName": "Android_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"},
+                    {"id": "p50", "year": 2022, "subjectId": "bca_y4_s7_android", "fileName": "Android_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.6 MB"},
+                    {"id": "p51", "year": 2023, "subjectId": "bca_y4_s7_android", "fileName": "Android_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.4 MB"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bca_y4_s8",
+              "name": "Semester 8",
+              "yearId": "bca_year4",
+              "subjects": [
+                {
+                  "id": "bca_y4_s8_project",
+                  "name": "Major Project",
+                  "code": "CS499",
+                  "semesterId": "bca_y4_s8",
+                  "papers": [
+                    {"id": "p52", "year": 2021, "subjectId": "bca_y4_s8_project", "fileName": "Project_Guidelines_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.5 MB"},
+                    {"id": "p53", "year": 2022, "subjectId": "bca_y4_s8_project", "fileName": "Project_Guidelines_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.6 MB"},
+                    {"id": "p54", "year": 2023, "subjectId": "bca_y4_s8_project", "fileName": "Project_Guidelines_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "1.5 MB"}
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bbs",
+      "name": "BBS",
+      "code": "BBS",
+      "icon": "business",
+      "years": [
+        {
+          "id": "bbs_year1",
+          "name": "1st Year",
+          "facultyId": "bbs",
+          "semesters": [
+            {
+              "id": "bbs_y1_s1",
+              "name": "Semester 1",
+              "yearId": "bbs_year1",
+              "subjects": [
+                {
+                  "id": "bbs_y1_s1_accounting",
+                  "name": "Principles of Accounting",
+                  "code": "ACC201",
+                  "semesterId": "bbs_y1_s1",
+                  "papers": [
+                    {"id": "p55", "year": 2021, "subjectId": "bbs_y1_s1_accounting", "fileName": "Accounting_Principles_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.2 MB"},
+                    {"id": "p56", "year": 2022, "subjectId": "bbs_y1_s1_accounting", "fileName": "Accounting_Principles_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.3 MB"},
+                    {"id": "p57", "year": 2023, "subjectId": "bbs_y1_s1_accounting", "fileName": "Accounting_Principles_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.1 MB"}
+                  ]
+                },
+                {
+                  "id": "bbs_y1_s1_economics",
+                  "name": "Microeconomics",
+                  "code": "ECO201",
+                  "semesterId": "bbs_y1_s1",
+                  "papers": [
+                    {"id": "p58", "year": 2021, "subjectId": "bbs_y1_s1_economics", "fileName": "Microeconomics_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"},
+                    {"id": "p59", "year": 2022, "subjectId": "bbs_y1_s1_economics", "fileName": "Microeconomics_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.6 MB"},
+                    {"id": "p60", "year": 2023, "subjectId": "bbs_y1_s1_economics", "fileName": "Microeconomics_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.4 MB"}
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bit",
+      "name": "BIT",
+      "code": "BIT",
+      "icon": "memory",
+      "years": [
+        {
+          "id": "bit_year1",
+          "name": "1st Year",
+          "facultyId": "bit",
+          "semesters": [
+            {
+              "id": "bit_y1_s1",
+              "name": "Semester 1",
+              "yearId": "bit_year1",
+              "subjects": [
+                {
+                  "id": "bit_y1_s1_fundamentals",
+                  "name": "IT Fundamentals",
+                  "code": "IT101",
+                  "semesterId": "bit_y1_s1",
+                  "papers": [
+                    {"id": "p61", "year": 2021, "subjectId": "bit_y1_s1_fundamentals", "fileName": "IT_Fundamentals_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.0 MB"},
+                    {"id": "p62", "year": 2022, "subjectId": "bit_y1_s1_fundamentals", "fileName": "IT_Fundamentals_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.1 MB"},
+                    {"id": "p63", "year": 2023, "subjectId": "bit_y1_s1_fundamentals", "fileName": "IT_Fundamentals_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.2 MB"}
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bba",
+      "name": "BBA",
+      "code": "BBA",
+      "icon": "work",
+      "years": [
+        {
+          "id": "bba_year1",
+          "name": "1st Year",
+          "facultyId": "bba",
+          "semesters": [
+            {
+              "id": "bba_y1_s1",
+              "name": "Semester 1",
+              "yearId": "bba_year1",
+              "subjects": [
+                {
+                  "id": "bba_y1_s1_management",
+                  "name": "Principles of Management",
+                  "code": "MGT101",
+                  "semesterId": "bba_y1_s1",
+                  "papers": [
+                    {"id": "p64", "year": 2021, "subjectId": "bba_y1_s1_management", "fileName": "Management_Principles_2021.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.3 MB"},
+                    {"id": "p65", "year": 2022, "subjectId": "bba_y1_s1_management", "fileName": "Management_Principles_2022.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.4 MB"},
+                    {"id": "p66", "year": 2023, "subjectId": "bba_y1_s1_management", "fileName": "Management_Principles_2023.pdf", "filePath": "assets/pdfs/sample.pdf", "fileSize": "2.5 MB"}
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
